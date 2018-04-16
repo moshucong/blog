@@ -6,9 +6,7 @@ categories: Docker
 ---
 
 
-Linux通过nofile配置来限制进程能够打开的文件句柄。Linux默认nofile配置为1024，在高并发场景下已经无法满足需求。
-
-因此，通常需要将docker容器的nofile配置修改得大一些。
+Linux通过nofile配置来限制进程能够打开的文件句柄。Linux默认nofile配置为1024，在高并发场景下已经无法满足需求。因此，通常需要将docker容器的nofile配置修改得大一些。
 
 
 ## 1. docker nofile介绍
