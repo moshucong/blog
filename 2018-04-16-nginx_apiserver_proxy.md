@@ -2,7 +2,7 @@
 layout: post
 title:  "借助Nginx为k8s API-Server提供反向代理"
 date:   2018-04-16 20:14:13 +0800
-categories: Golang
+categories: Kubernetes
 ---
 
 
