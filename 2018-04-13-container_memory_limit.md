@@ -2,7 +2,7 @@
 layout: post
 title:  "为什么容器内的应用无法感知其内存限制"
 date:   2018-04-13 17:12:13 +0800
-categories: 容器
+categories: Docker
 ---
 
 运行在容器内的应用其实无法获知容器实际的内存限制。
