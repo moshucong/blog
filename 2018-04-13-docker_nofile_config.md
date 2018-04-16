@@ -2,7 +2,7 @@
 layout: post
 title:  "配置docker nofile"
 date:   2018-04-13 17:12:13 +0800
-categories: docker
+categories: Docker
 ---
 
 
