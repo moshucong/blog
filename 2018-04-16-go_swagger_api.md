@@ -56,8 +56,8 @@ SwaggerUIBundle()方法将从该URL读取并解析swagger配置文件来生成�
 
 有一些工具够为Go程序生成swagger配置文件，例如：
 
-* go-swagger/go-swagger（https://github.com/go-swagger/go-swagger）
-* yvasiyarov/swagger（https://github.com/yvasiyarov/swagger）
+* [go-swagger/go-swagger](https://github.com/go-swagger/go-swagger)
+* [yvasiyarov/swagger](https://github.com/yvasiyarov/swagger)
 
 这些工具大同小异。
 
@@ -116,7 +116,7 @@ swagger generate spec -i ./swagger.yml -o ./swagger.json
 
 swagger配置文件很简单，尤其是yaml配置方式语义非常清晰明确。 
 
-编写时可借助在线的swagger配置编辑器（ http://editor.swagger.io ），但需要注意的是：在线编辑器的域名是``editor.swagger.io``，后台必须要配置好后端的CORS策略才能在线调用后端API。    
+编写时可借助[在线的swagger配置编辑器](http://editor.swagger.io)，但需要注意的是：在线编辑器的域名是``editor.swagger.io``，后台必须要配置好后端的CORS策略才能在线调用后端API。    
 
 ## 3. swagger服务部署
 
