@@ -45,7 +45,9 @@ IPv4 BGP status
 
 此处，应该确认的内容包括：
 
-* 节点的hostname是否符合要求、节点的hostname是否出现重名。
+* 节点的hostname是否符合要求。部分calico版本对hostname格式有要求。
+* 节点的hostname是否唯一。calico以hostname作为节点的标识符。当节点hostname重复时，后面加入的重名calico节点会启动失败。
+* 节点的hostname近期是否发生过变动。当节点hostname发生变化后，calico会认为是一个新的节点加入网络，从而导致异常。
 * 网络设备名是否符合要求（通常要求是eth0）。
 
 
