@@ -6,6 +6,7 @@ categories: Kubernetes
 ---
 
 
+一般的应用通常并不需要访问k8s API。但如果你需要开发用于k8s集群管理的应用，而且需要以容器方式运行在k8s集群中，那么就有必要了解在pod中访问k8s API的方法。
 本文介绍在pod内访问k8s api-server的两种方式：curl方式，client-go方式。对于go语言编写的app，推荐直接使用client-go访问。
 
 
@@ -122,17 +123,8 @@ curl -k --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H  "Autho
 
 ### 2. 在pod内，通过client-go访问k8s api-server
 
-Kubernetes官方提供一个go语言客户端：client-go。通过该客户端可以方便地访问k8s api-server，而无需再编写相关的代码。
-
-可参考[client-go官方的安装说明](https://github.com/kubernetes/client-go/blob/master/INSTALL.md)
-
-由于我们的k8s集群版本是1.9，因此选用client-go 6.0版本。
-
-此处提供一个完整的示例：
-
-```
-https://github.com/moshucong/client-go-example
-```
+client-go官方提供了详细的[安装说明](https://github.com/kubernetes/client-go/blob/master/INSTALL.md)，以及[示例代码](https://github.com/kubernetes/client-go/tree/master/examples/in-cluster-client-configuration)。
+此处提供[一个完整的示例](https://github.com/moshucong/client-go-example)
 
 参考资料：
 1. [Access Clusters Using the Kubernetes API](https://kubernetes.io/docs/tasks/administer-cluster/access-cluster-api/)
