@@ -53,7 +53,7 @@ IPv4 BGP status
 
 
 
-### 1.3 检查路由信息
+### 1.2 检查路由信息
 
 以下是一个正常的calico节点的路由信息。
 
@@ -88,9 +88,9 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 
 
 
-## 2. 重置calico-node
+## 2. 解决问题后，重置calico-node
 
-在第1步定位到问题原因并解决之后，通常需要重置calico node。
+通过第1步定位到问题原因，并解决之后，通常需要重置calico node。
 
 重置calico node时，首先要通过calicoctl命令删除calico node。
 
@@ -144,8 +144,6 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 docker0
 172.30.10.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
 ```
-
-
 
 然后，删除不正常的网络设备：
 
@@ -219,8 +217,6 @@ tunl0     Link encap:IPIP Tunnel  HWaddr
 
 
 
-然后，再使用第二式“重置calico-node”。
-
-
+calico-node重置后，节点上的pod应全部重启，以便更新IP和路由。
 
 
