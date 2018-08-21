@@ -49,21 +49,7 @@ IPv4 BGP status
 * 节点的hostname是否唯一。calico以hostname作为节点的标识符。当节点hostname重复时，后面加入的重名calico节点会启动失败。
 * 节点的hostname近期是否发生过变动。当节点hostname发生变化后，calico会认为是一个新的节点加入网络，从而导致异常。
 * 网络设备名是否符合要求（通常要求是eth0）。
-
-
-
-### 1.2 检查有没有其他网络方案在运行
-
-两种容器网络方案如果同时运行，通常就会出现难以预料的问题。
-
-````
-ps -ef | grep ovs
-ps -ef | grep flannel
-ps -ef | grep weave
-... ... 
-````
-
-如果还有其他容器网络方案在运行，就必须先kill掉。
+* 检查有没有其他网络方案在运行，如flannel。两种容器网络方案如果同时运行，通常就会出现难以预料的问题。
 
 
 
