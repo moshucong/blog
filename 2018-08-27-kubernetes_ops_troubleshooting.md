@@ -212,4 +212,55 @@ root hard nofile 102400
 
 
 
+### 5. 节点hostname改动，导致节点calico网络故障 
+
+严重性：★★★★★（导致节点容器网络失效）
+
+#### 5.1 问题表现
+
+某天，人已经在家中坐。收到同事消息，说是容器启动失败。上线一看，发现该项目4个节点上新启动的容器确实无法进行网络通信。
+
+检查容器集群网络状态，发现出现了4个没见过的新节点。
+
+```
+# calicoctl node status
+
+# 4个节点的hostname
+AMZ-IAD12-OpsResPool-xxx-xx
+AMZ-IAD12-OpsResPool-xxx-xx
+AMZ-IAD12-OpsResPool-xxx-xx
+AMZ-IAD12-OpsResPool-xxx-xx
+
+.... ....
+
+# 4个未见过的hostname
+ip-xx-xx-xxx-xx.ec2.internal
+ip-xx-xx-xxx-xx.ec2.internal
+ip-xx-xx-xxx-xx.ec2.internal
+ip-xx-xx-xxx-xx.ec2.internal
+```
+
+
+
+#### 5.2 原因
+
+经沟通，得知同事当天修改过这4个节点的hostname，从``AMZ-IAD12-OpsResPool-xxx-xx``改成了``ip-xx-xx-xxx-xx.ec2.internal``格式 。至此，问题的原因明确了：
+
+容器集群的网络方案是calico网络。calico将节点的网络信息保存于etcd数据库（key-value）中，并使用节点的hostname作为数据的key。当节点的hostname发生变化时，calico会将其识别为一个新的节点。etcd中会同时存储一个节点的两份不同的配置，导致节点的calico网络出现故障。
+
+
+
+#### 5.3 解决方案
+
+**容器集群节点的hostname非常关键。当运维或业务同事需要修改容器集群节点的hostname时，一定要提前通知容器集群的管理员**。
+
+当节点hostname发生变化后，集群管理员需重置该节点的calico网络，步骤如下：
+
+* 首先，通过``calicoctl``命令删除旧的calico节点，清除etcd中该节点的信息。
+* 其次，通过``kubectl``命令重启该节点上的``calico-node``容器，让节点calico网络重置。
+* 最后，通过``kubectl``命令重启该节点上所有采用容器网络的pod。
+
+
+
+
 
