@@ -46,12 +46,6 @@ calico-node启动阶段会访问etcd获取集群网络配置，所以首先怀�
 ```
 root@hostname:/#  curl --cacert /etc/cni/net.d/calico-tls/etcd-ca --cert /etc/cni/net.d/calico-tls/etcd-cert --key /etc/cni/net.d/calico-tls/etcd-key https://[ETCD服务IP]:2379/health
 {"health": "true"}
-
-root@hostname:/# curl --cacert /etc/cni/net.d/calico-tls/etcd-ca --cert /etc/cni/net.d/calico-tls/etcd-cert --key /etc/cni/net.d/calico-tls/etcd-key https://[ETCD服务IP]:2379/health
-{"health": "true"}
-
-root@hostname:/# curl --cacert /etc/cni/net.d/calico-tls/etcd-ca --cert /etc/cni/net.d/calico-tls/etcd-cert --key /etc/cni/net.d/calico-tls/etcd-key https://[ETCD服务IP]:2379/health
-{"health": "true"}
 ```
 
 发现可以连上etcd，很失望。那么可以排除etcd连接问题。
