@@ -1,10 +1,11 @@
 ---
 layout: post
 title:  "kubeflow介绍"
-date:   2019-04-12 17:12:13 +0800
+date:   2019-04-12 12:12:13 +0800
 categories: Kubeflow
 ---
 
+本文主要介绍kubeflow解决的问题、简单的使用、原理。
 
 ## 1. 深度学习的革命性进展
 
@@ -185,7 +186,7 @@ kubeflow是借助Kubernetes的[operator](https://coreos.com/operators/)机制实
 
 **2）对GPU的支持**
 
-对GPU的支持是通过[nvidia-docker](https://github.com/NVIDIA/nvidia-docker)和[kubelet device plugin](https://github.com/NVIDIA/k8s-device-plugin)实现，具体实施可参考[容器支持GPU资源](http://172.30.10.223/pages/viewpage.action?pageId=34571142) 。
+对GPU的支持是通过[nvidia-docker](https://github.com/NVIDIA/nvidia-docker)和[kubelet device plugin](https://github.com/NVIDIA/k8s-device-plugin)实现。
 
 
 
