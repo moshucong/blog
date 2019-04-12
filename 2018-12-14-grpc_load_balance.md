@@ -91,7 +91,7 @@ wget https://github.com/nginx/nginx/archive/release-1.15.7.tar.gz
 tar -xvf ./release-1.15.7.tar.gz
 
 cd $NGINX_WORKSPACE/nginx-release-1.15.7
-auto/configure --with-http_ssl_module --with-http_v2_module
+auto/configure --with-http_ssl_module --with-http_v2_module 
 make
 sudo make install
 ```
@@ -103,16 +103,16 @@ sudo make install
 
 ```
 #user nobody;
-worker_processes  4;     # 设为cpu core数 * 2
+worker_processes  4;     # cpu core
 
 error_log  logs/error.log;
 
 pid        /run/nginx.pid;
 
 events {
-    worker_connections  65535; # 连接数总上限 : worker_processes * worker_connections
-    multi_accept on; 
-    use epoll;  
+    worker_connections  1o24; # max connection =  worker_processes * worker_connections
+#    multi_accept on; 
+#    use epoll;  
 }
 
 
